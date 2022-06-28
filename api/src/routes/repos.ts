@@ -4,6 +4,12 @@ import axios from 'axios';
 export const repos = Router();
 
 repos.get('/', async (_: Request, res: Response) => {
+  await axios
+    .get('https://api.github.com/users/silverorange/repos')
+    .then((response) => {
+      const repositoryData = response.data[0];
+    });
+
   res.header('Cache-Control', 'no-store');
 
   res.status(200);

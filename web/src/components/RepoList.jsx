@@ -1,8 +1,14 @@
 import React from 'react';
 import RepoListItem from './RepoListItem';
 
-const RepoList = (props) => {
-  return <ul></ul>;
+const RepoList = ({ repoData }) => {
+  const listOfRepoData = repoData;
+  console.log(listOfRepoData);
+  return (
+    <ul>
+      <RepoListItem />
+    </ul>
+  );
 };
 
 export default RepoList;

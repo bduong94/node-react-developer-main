@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 
 import './App.css';
+import axios from 'axios';
 
 export function App() {
+  const [repoData, setRepoData] = useState([]);
+
+  const fetchRepoDataFromApi = async () => {
+    const fetchedRepoData = await axios.get('http://localhost:4000/repos');
+
+    return fetchedRepoData;
+  };
+
+  useEffect(() => {
+    const fetchRepoData = async () => await fetchRepoDataFromApi();
+
+    fetchRepoData().then((response) => {
+      setRepoData(response.data);
+    });
+  }, [repoData]);
+
   return (
     <div className="App">
       <header className="App-header">

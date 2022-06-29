@@ -25,6 +25,7 @@ repos.get('/', async (_: Request, res: Response) => {
       }
 
       res.header('Cache-Control', 'no-store');
+      res.setHeader('Content-Type', 'application/json');
 
       res.status(200);
 

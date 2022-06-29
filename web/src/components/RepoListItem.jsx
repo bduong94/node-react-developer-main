@@ -14,11 +14,12 @@ const RepoListItem = ({ name, language, forkCount, updatedAt }) => {
   const commitDate = new Date(updatedAt);
   return (
     <li onClick={toggleDetails}>
+      Repository Details
       <ul>{`Name: ${name}`}</ul>
       <ul>{`Language: ${language}`}</ul>
       <ul>{`Fork Count: ${forkCount}`}</ul>
       {showMoreDetails && (
-        <ul>{`Updated at: ${commitDate.toLocaleDateString('en-US')}`}</ul>
+        <ul>{`Last commit at: ${commitDate.toLocaleDateString('en-US')}`}</ul>
       )}
     </li>
   );

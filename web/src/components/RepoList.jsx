@@ -8,16 +8,12 @@ const RepoList = ({ repoData }) => {
         key={repository.id}
         name={repository.name}
         language={repository.language}
-        forkCount={repository['fork-count']}
+        forkCount={repository.forks_count}
       />
     );
   });
   console.log(listOfRepoData);
-  return (
-    <ul>
-      <RepoListItem />
-    </ul>
-  );
+  return <ul>{listOfRepoData}</ul>;
 };
 
 export default RepoList;

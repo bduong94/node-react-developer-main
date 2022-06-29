@@ -8,7 +8,7 @@ const testData = {
   'fork-count': 5,
 };
 
-const RepoListItem = ({ repoInformation }) => {
+const RepoListItem = ({ name, language, forkCount }) => {
   return (
     <li>{`${testData.name} ${testData.language} ${testData['fork-count']}`}</li>
   );

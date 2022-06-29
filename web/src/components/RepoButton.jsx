@@ -1,7 +1,7 @@
 import React from 'react';
 
-const RepoButton = ({ language }) => {
-  return <button>{language}</button>;
+const RepoButton = ({ language, onClick }) => {
+  return <button onClick={onClick}>{language}</button>;
 };
 
 export default RepoButton;

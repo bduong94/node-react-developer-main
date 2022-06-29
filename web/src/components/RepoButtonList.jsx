@@ -1,7 +1,7 @@
 import React from 'react';
 import RepoButton from './RepoButton';
 
-const RepoButtonList = ({ repoData }) => {
+const RepoButtonList = ({ repoData, onClick }) => {
   const uniqueLanguagesList = [];
 
   for (const repository of repoData) {
@@ -11,7 +11,7 @@ const RepoButtonList = ({ repoData }) => {
   }
 
   const listOfLanguageButtons = uniqueLanguagesList.map((language) => {
-    return <RepoButton key={language} language={language} />;
+    return <RepoButton key={language} language={language} onClick={onClick} />;
   });
 
   return <>{listOfLanguageButtons}</>;

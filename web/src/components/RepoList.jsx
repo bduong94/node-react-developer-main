@@ -1,7 +1,7 @@
 import React from 'react';
 import RepoListItem from './RepoListItem';
 
-const RepoList = ({ repoData }) => {
+const RepoList = ({ repoData, filteredLanguage }) => {
   const sortedRepoDataByDate = repoData.sort(
     (a, b) => new Date(a.created_at) - new Date(b.created_at)
   );

@@ -7,7 +7,7 @@ import RepoButtonList from './components/RepoButtonList';
 
 export function App() {
   const [repoData, setRepoData] = useState([]);
-  // const [listOfLangauges, setListOfLangauges] = useState([]);
+  const [filteredLanguage, setFilteredLanguage] = useState(false);
 
   const fetchRepoDataFromApi = async () => {
     const fetchedRepoData = await axios.get('http://localhost:4000/repos');
@@ -25,8 +25,8 @@ export function App() {
 
   return (
     <div>
-      <RepoButtonList repoData={repoData} />
-      <RepoList repoData={repoData} />
+      <RepoButtonList repoData={repoData} onClick={setFilteredLanguage} />
+      <RepoList repoData={repoData} filteredLanguage={filteredLanguage} />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import { Router, Request, Response } from 'express';
 import axios from 'axios';
-import { fork } from 'child_process';
 import localRepos from '../../data/repos.json';
 
 export const repos = Router();

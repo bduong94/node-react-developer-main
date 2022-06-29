@@ -17,7 +17,6 @@ const RepoList = ({ repoData }) => {
       />
     );
   });
-  console.log(listOfRepoData);
   return <ul>{listOfRepoData}</ul>;
 };
 

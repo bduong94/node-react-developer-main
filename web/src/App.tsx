@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import RepoList from './components/RepoList';
+import RepoButtonList from './components/RepoButtonList';
 
 export function App() {
   const [repoData, setRepoData] = useState([]);
+  // const [listOfLangauges, setListOfLangauges] = useState([]);
 
   const fetchRepoDataFromApi = async () => {
     const fetchedRepoData = await axios.get('http://localhost:4000/repos');
@@ -23,6 +25,7 @@ export function App() {
 
   return (
     <div>
+      <RepoButtonList repoData={repoData} />
       <RepoList repoData={repoData} />
     </div>
   );

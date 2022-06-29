@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import axios from 'axios';
+import { fork } from 'child_process';
 
 export const repos = Router();
 
@@ -7,13 +8,20 @@ repos.get('/', async (_: Request, res: Response) => {
   await axios
     .get('https://api.github.com/users/silverorange/repos')
     .then((response) => {
-      const repositoryData = response.data[0];
+      const repositoryData = response.data;
+      const notForkedRepositories = [];
+
+      for (const repo of repositoryData) {
+        if (repo.fork === false) {
+          notForkedRepositories.push(repo);
+        }
+      }
+
+      res.header('Cache-Control', 'no-store');
+
+      res.status(200);
+
+      // TODO: See README.md Task (A). Return repo data here. You’ve got this!
+      res.json(notForkedRepositories);
     });
-
-  res.header('Cache-Control', 'no-store');
-
-  res.status(200);
-
-  // TODO: See README.md Task (A). Return repo data here. You’ve got this!
-  res.json([]);
 });

@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import axios from 'axios';
 import { fork } from 'child_process';
+import localRepos from '../../data/repos.json';
 
 export const repos = Router();
 
@@ -12,6 +13,12 @@ repos.get('/', async (_: Request, res: Response) => {
       const notForkedRepositories = [];
 
       for (const repo of repositoryData) {
+        if (repo.fork === false) {
+          notForkedRepositories.push(repo);
+        }
+      }
+
+      for (const repo of localRepos) {
         if (repo.fork === false) {
           notForkedRepositories.push(repo);
         }

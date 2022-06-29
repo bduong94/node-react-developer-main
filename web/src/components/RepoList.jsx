@@ -15,7 +15,7 @@ const RepoList = ({ repoData, filteredLanguage }) => {
         name={repository.name}
         language={repository.language}
         forkCount={repository.forks_count}
-        updatedAt={repository.update_at}
+        updatedAt={repository.updated_at}
       />
     );
   });

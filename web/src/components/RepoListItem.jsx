@@ -1,17 +1,25 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 
-const RepoListItem = ({ name, language, forkCount }) => {
-  //   const [showMoreDetails, setShowMoreDetails] = useState(false);
+const RepoListItem = ({ name, language, forkCount, updatedAt }) => {
+  const [showMoreDetails, setShowMoreDetails] = useState(false);
 
-  //   const showDetails = () => {
-  //     setShowMoreDetails(true);
-  //   };
+  const toggleDetails = () => {
+    if (!showMoreDetails) {
+      setShowMoreDetails(true);
+    } else {
+      setShowMoreDetails(false);
+    }
+  };
 
+  const commitDate = new Date(updatedAt);
   return (
-    <li>
+    <li onClick={toggleDetails}>
       <ul>{`Name: ${name}`}</ul>
       <ul>{`Language: ${language}`}</ul>
       <ul>{`Fork Count: ${forkCount}`}</ul>
+      {showMoreDetails && (
+        <ul>{`Updated at: ${commitDate.toLocaleDateString('en-US')}`}</ul>
+      )}
     </li>
   );
 };

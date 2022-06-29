@@ -25,7 +25,10 @@ export function App() {
 
   return (
     <div>
-      <RepoButtonList repoData={repoData} onClick={setFilteredLanguage} />
+      <RepoButtonList
+        repoData={repoData}
+        setFilteredLanguage={setFilteredLanguage}
+      />
       <RepoList repoData={repoData} filteredLanguage={filteredLanguage} />
     </div>
   );

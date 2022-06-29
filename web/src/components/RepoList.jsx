@@ -2,9 +2,11 @@ import React from 'react';
 import RepoListItem from './RepoListItem';
 
 const RepoList = ({ repoData, filteredLanguage }) => {
-  const sortedRepoDataByDate = repoData.sort(
-    (a, b) => new Date(a.created_at) - new Date(b.created_at)
-  );
+  const sortedRepoDataByDate = filteredLanguage
+    ? repoData
+        .filter((repository) => repository.language === filteredLanguage)
+        .sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
+    : repoData.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 
   const listOfRepoData = sortedRepoDataByDate.map((repository) => {
     return (
